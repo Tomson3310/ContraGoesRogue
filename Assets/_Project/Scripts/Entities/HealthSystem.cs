@@ -63,5 +63,15 @@ namespace ContraGoesRogue.Entities
 
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
+        
+        
+        // --- SEKCJA DEBUGOWANIA (do usunięcia w finalnej grze) ---
+        [ContextMenu("Test: Otrzymaj 1 pkt obrażeń")]
+        private void DebugTakeDamage()
+        {
+            TakeDamage(1);
+        }
     }
+
+
 }
