@@ -18,12 +18,12 @@ namespace ContraGoesRogue.Entities
 
         [Header("Events")]
         // Sends current and max health values
-        public UnityEvent<int, int> OnHealthChanged;
+        public UnityEvent<int, int> OnHealthChanged = new UnityEvent<int, int>();
 
         // Called when the object dies
-        public UnityEvent OnDied;
+        public UnityEvent OnDied = new UnityEvent();
 
-        private void Start()
+        private void Awake()
         {
             currentHealth = maxHealth;
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -63,14 +63,15 @@ namespace ContraGoesRogue.Entities
 
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
         }
-        
-        
+
+#if UNITY_EDITOR        
         // --- SEKCJA DEBUGOWANIA (do usunięcia w finalnej grze) ---
         [ContextMenu("Test: Otrzymaj 1 pkt obrażeń")]
         private void DebugTakeDamage()
         {
             TakeDamage(1);
         }
+#endif
     }
 
 
