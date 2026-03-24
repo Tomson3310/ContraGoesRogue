@@ -17,6 +17,11 @@ All notable changes to this project will be documented in this file.
 - Integrated the **Unity Input System** package and generated its C# wrapper class.
 - Created the **InputReader** component to decouple Unity input from game logic.
 - Added **HealthLogger** (DevTools) for testing HP changes in the console.
+- Implemented a base **PlayerMovement** script using the new Input System.
+- Added a jump mechanic based on `Rigidbody.AddForce` with `ForceMode.Impulse`.
+- Introduced ground detection using `Physics.CheckSphere` and layer masks.
+- Implemented player model flipping logic based on movement direction.
+- Created automated tests for **PlayerMovement** (verifying `Flip` method and object rotation changes).
 
 ### Changed
 - Protected developer tools (HealthLogger and test-related logic in HealthSystem) from being included in builds using preprocessor directives (`#if UNITY_EDITOR`).
