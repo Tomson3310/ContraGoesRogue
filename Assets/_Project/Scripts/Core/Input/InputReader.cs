@@ -11,6 +11,8 @@ namespace ContraGoesRogue.Core.Input
 
         public Vector2 MoveInput { get; private set; }
         public bool JumpTriggered { get; private set; }
+        public bool ShootTriggered { get; private set; }
+
 
         private void Awake()
         {
@@ -20,6 +22,7 @@ namespace ContraGoesRogue.Core.Input
             inputActions.Player.Move.canceled += context => MoveInput = Vector2.zero;
 
             inputActions.Player.Jump.performed += context => JumpTriggered = true;
+            inputActions.Player.Shoot.performed += context => ShootTriggered = true;
         }
 
         private void OnEnable()
@@ -36,6 +39,12 @@ namespace ContraGoesRogue.Core.Input
         public void ConsumeJump()
         {
             JumpTriggered = false;
+        }
+        
+        // Resets shoot trigger after it has been processed
+        public void ConsumeShoot()
+        {
+            ShootTriggered = false;
         }
     }
 }

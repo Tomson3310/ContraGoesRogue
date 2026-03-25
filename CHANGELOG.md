@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v0.2.1] - 2026-03-25
+
+### Added
+- Implemented `PlayerShooting` script integrated with the new Input System (Shoot action bound to LMB).
+- Added projectile system (`Projectile.cs`) using `Rigidbody` physics (no gravity, `IsTrigger` mode).
+- Created `Bullet` prefab for the shooting system.
+- Implemented test target `TargetDummy` (prefab) using the `IDamageable` interface and connected to `HealthSystem`.
+- Added automated unit tests:
+  - `TargetDummyTests` – verification of damage passing,
+  - `PlayerShootingTests` – verification of correct bullet instantiation.
+- Attached the `HealthLogger` developer tool to the `TargetDummy` prefab to facilitate debugging.
+
+### Changed
+- Refactored `PlayerShooting` script:
+  - Introduced `[field: SerializeField]` properties,
+  - Extracted `Shoot()` method to enable dependency injection in tests.
+
+---
+
 ## [v0.2.0] - 2026-03-23
 
 ### Added
