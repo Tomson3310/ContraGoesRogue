@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v0.2.2] - 2026-03-26
+
+### Added
+- Created `GroundBlock` prefab assigned to the `Ground` layer, serving as a basic modular element for building 2.5D levels (using 3D Grid Snapping).
+- Created and assigned a `ZeroFriction` physics material to the player (Friction: 0, Combine: Minimum), resolving the wall-sticking issue while airborne.
+- Implemented a **Jump Buffer** system, allowing input buffering when the jump button is pressed shortly before landing.
+- Added `OnDrawGizmosSelected` method to the `PlayerMovement` script for visualizing ground detection radius in the Unity editor.
+
+### Changed
+- Refactored `PlayerMovement` script:
+  - Strict separation between input/timer handling (`Update`) and physics application (`FixedUpdate`).
+- Updated player rotation logic:
+  - `Flip()` now uses explicit rotation assignment via `Rigidbody.rotation` and `Quaternion.Euler`, preventing conflicts with the physics engine.
+- Adjusted global gravity (Y set to -30) and increased jump force to achieve a more dynamic, arcade-like feel.
+
+### Fixed
+- Eliminated trampoline effect (**Velocity Accumulation**) by resetting vertical velocity (Y axis) before applying jump force.
+- Fixed failing `PlayerMovementTests` after `Flip()` refactor by immediately synchronizing `transform.rotation` with `Rigidbody.rotation`.
+
+---
+
 ## [v0.2.1] - 2026-03-25
 
 ### Added
@@ -15,6 +36,7 @@ All notable changes to this project will be documented in this file.
   - `TargetDummyTests` – verification of damage passing,
   - `PlayerShootingTests` – verification of correct bullet instantiation.
 - Attached the `HealthLogger` developer tool to the `TargetDummy` prefab to facilitate debugging.
+- Integrated **Cinemachine** package and configured a 2D virtual camera that follows the player on X/Y axes.
 
 ### Changed
 - Refactored `PlayerShooting` script:
