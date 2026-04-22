@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.3.0] - 2026-04-23
+
+### Added
+- Implemented `EnemyRunner` AI script based on the Finite State Machine pattern (states: Idle, Chase).
+- Integrated the enemy with the `IDamageable` interface and `HealthSystem` script using the Facade pattern, ensuring clean architecture (SRP) and preventing code duplication.
+- Added melee damage logic for the Player on direct physical contact.
+- Built the first playable level prototype.
+- Added new layers: `Player` and `PlayerProjectile`.
+
+### Fixed
+- Resolved an issue where projectiles were being destroyed immediately after spawning by disabling collisions between player projectiles and the player in the Layer Collision Matrix.
+
 ---
 
 ## [v0.2.2] - 2026-03-26

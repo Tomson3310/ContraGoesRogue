@@ -574,7 +574,7 @@ namespace ContraGoesRogue.Core.Input
                 {
                     ""name"": """",
                     ""id"": ""d1b6e348-d5c6-464a-a2e4-f13ae3e95870"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
