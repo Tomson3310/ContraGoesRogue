@@ -13,7 +13,7 @@ namespace ContraGoesRogue.Entities
         [SerializeField] private Transform groundCheck;
         [SerializeField] private float groundCheckRadius = 0.1f;
         [SerializeField] private LayerMask groundMask;
-        private bool isGrounded;
+        public bool IsGrounded { get; private set; }
 
         [Header("Jump Polish")]
         [SerializeField] private float jumpBufferTime = 0.2f;
@@ -46,7 +46,7 @@ namespace ContraGoesRogue.Entities
         void FixedUpdate()
         {
             // WYKRYWANIE PODŁOŻA
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
+            IsGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
             // RUCH POZIOMY
             rb.linearVelocity = new Vector3(inputReader.MoveInput.x * moveSpeed, rb.linearVelocity.y, 0f);
@@ -64,7 +64,7 @@ namespace ContraGoesRogue.Entities
             }
 
             // WYKONANIE SKOKU Z BUFORA
-            if (jumpBufferCounter > 0f && isGrounded)
+            if (jumpBufferCounter > 0f && IsGrounded)
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
