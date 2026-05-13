@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.4.1] - 2026-05-13
+
+### Added
+- Implemented `EnemyDrone` script with a 3-state AI (Patrol, Attack, Escape).
+- Added a wall avoidance system for the drone using raycasts (`Physics.Raycast`).
+- Introduced a dynamic hovering system to maintain flight altitude.
+- Created `Bomb` script with Area of Effect (AoE) damage logic using `Physics.OverlapSphere`.
+- Added Gizmos for `EnemyTurret` to facilitate level design (visualizing shooting direction in the editor).
+
+### Fixed
+- Eliminated drone jittering issue during the Patrol phase by separating the Y-axis and changing the distance calculation logic to the X-axis.
+- Fixed an issue where the drone would get stuck on walls during the Escape phase by disabling collisions after dropping a bomb.
+
+---
+
+## [v0.4.0] - 2026-05-11
+
+### Added
+- Reverted to original design premises: the game is back to classic 8-way shooting.
+- Implemented shooting direction reading logic (`Vector2`) in the `PlayerShooting` script based on key input (`InputReader.MoveInput`).
+- Added dynamic projectile rotation using the `Mathf.Atan2` trigonometric function to convert vectors into Euler angles on the Z-axis.
+
+### Changed
+- Introduced a condition blocking the ability to shoot vertically downwards while grounded, while preserving the ability to shoot diagonally downwards.
+
+---
+
 ## [v0.3.0] - 2026-04-23
 
 ### Added
